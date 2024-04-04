@@ -25,9 +25,5 @@ const connectDB = async ()=>{
     }
     }  
 
-app.get('/',(req,res)=>{
-    res.send("Hello")
-})
-
-app.use('/goal',goalRouter)
+export default connectDB
 
