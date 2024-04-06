@@ -1,27 +1,29 @@
 import React, { useState } from 'react';
+import { login } from '../services/users';
 
-const LoginPage = () => {
-  const [usernameOrEmail, setUsernameOrEmail] = useState('');
-  const [password, setPassword] = useState('');
+function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // Add your login logic here, for example, sending data to the server
-  };
+    const handleLogin = async () => {
+        try {
+            const data = await login(email, password);
+            console.log('Login successful:', data);
+        } catch (error) {
+            setError(error.message);
+        }
+    };
 
-  return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <label>Username or Email:</label><br />
-        <input type="text" value={usernameOrEmail} onChange={(e) => setUsernameOrEmail(e.target.value)} /><br />
-        <label>Password:</label><br />
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} /><br /><br />
-        <input type="submit" value="Login" />
-      </form>
-    </div>
-  );
-};
+    return (
+        <div>
+            <h2>Login</h2>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+            <button onClick={handleLogin}>Login</button>
+            {error && <p>{error}</p>}
+        </div>
+    );
+}
 
-export default LoginPage;
-
+export default Login;

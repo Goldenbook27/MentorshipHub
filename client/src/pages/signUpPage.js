@@ -8,7 +8,7 @@ const SignUpPage = () => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    // Add your sign up logic here, for example, sending data to the server
+    
   };
 
   return (
