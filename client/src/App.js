@@ -1,7 +1,11 @@
+const loginPage = require('./pages/loginPage');
+const signUpPage = require('./pages/signUpPage');
+
 function App() {
   return (
     <div className="App">
-      <h1>Working</h1>
+      hello
+      <loginPage></loginPage>
     </div>
   );
 }
